@@ -17,10 +17,10 @@ entity Beamformer is
 	port(clk: in std_logic;
 	     cen: out std_logic;
 	     cclk: out std_logic;
-		 sync: out std_logic;
-		 n: out  std_logic_vector(10 downto 0);
-		 ang: out std_logic_vector(4 downto 0);
-         sum: out std_logic_vector(15 downto 0)
+		  sync: out std_logic;
+		  n: out  std_logic_vector(10 downto 0);
+		  ang: out std_logic_vector(5 downto 0);
+        sum: out std_logic_vector(15 downto 0)
 		);
 end Beamformer;
 
@@ -29,18 +29,18 @@ architecture Behavioral of Beamformer is
 ------------------------------------------------------- Components Begin ------------------------------------------	
 	component 	BRAM_Init   generic( fname : string  := "dataA.txt") ;
 							port(    clk  : in std_logic;
-                                     ce   : in std_logic;							
-								     addr : in std_logic_vector(10 downto 0);    
-								     dout : out std_logic_vector(15 downto 0)
+                              ce   : in std_logic;							
+								      addr : in std_logic_vector(10 downto 0);    
+								      dout : out std_logic_vector(15 downto 0)
 								);
 	end component;
 	
 	component AddressMachine generic ( M: integer:= 0);
 							 port ( clk: in std_logic;
-							       ce   : in std_logic;	
-								   nsamp: in  std_logic_vector(10 downto 0);
-								   angle: in  std_logic_vector(4 downto 0);
-								   addr:  out std_logic_vector(10 downto 0)
+							        ce   : in std_logic;	
+								     nsamp: in  std_logic_vector(10 downto 0);
+								     angle: in  std_logic_vector(5 downto 0);
+								     addr:  out std_logic_vector(10 downto 0)
 								   );
 	end component;
 	
@@ -55,7 +55,7 @@ architecture Behavioral of Beamformer is
     signal cntdiv: 															 std_logic_vector(7 downto 0);
 	-- Block RAM address signals
     signal addr1, addr2, addr3, addr4, addr5, addr6, addr7, addr8:           std_logic_vector(10 downto 0); 
-	signal angle, acount: 													 std_logic_vector(4 downto 0);                    
+	signal angle, acount: 													 std_logic_vector(5 downto 0);                    
 	-- output from block RAM
 	signal xin1, xin2, xin3, xin4, xin5, xin6, xin7, xin8:                  std_logic_vector(15 downto 0);
 
@@ -110,7 +110,7 @@ ang_proc:  process(clk)
 					angle <= (others => '0');	
 				end if;
 			 else
-					angle <= "10011";
+					angle <= "010011";
 			 end if;			
 			end if;
 		   end process;

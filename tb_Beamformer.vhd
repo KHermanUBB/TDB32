@@ -18,11 +18,11 @@ ARCHITECTURE behavior OF tb_Beamformer IS
     COMPONENT Beamformer
     PORT(
          clk : IN  std_logic;
-		 cen: out  std_logic;
+		   cen: out  std_logic;
          cclk : OUT  std_logic;
-		 sync: out std_logic;
+		   sync: out std_logic;
          n : OUT  std_logic_vector(10 downto 0);
-		 ang: out std_logic_vector(4 downto 0);
+		   ang: out std_logic_vector(5 downto 0);
          sum : OUT  std_logic_vector(15 downto 0)
         );
     END COMPONENT;
@@ -36,7 +36,7 @@ ARCHITECTURE behavior OF tb_Beamformer IS
    signal cclk : std_logic;
    signal sync:  std_logic;
    signal n : std_logic_vector(10 downto 0);
-   signal  ang:  std_logic_vector(4 downto 0);
+   signal  ang:  std_logic_vector(5 downto 0);
    signal sum : std_logic_vector(15 downto 0);
    
    -- file declarations
