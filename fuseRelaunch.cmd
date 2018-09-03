@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "secureip" -o "/home/icarosix/FPGA/Spain/Bemforming/ise/TDB_AddresMachine32/tb_Beamformer_isim_beh.exe" -prj "/home/icarosix/FPGA/Spain/Bemforming/ise/TDB_AddresMachine32/tb_Beamformer_beh.prj" "work.tb_Beamformer" 
